@@ -1,0 +1,515 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Employees API</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>Employees API</h1>
+    <div class="app-desc">Микросервис для работы с сотрудниками</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Employees">Employees</a></h4>
+  <ul>
+  <li><a href="#apiEmployeesGet"><code><span class="http-method">get</span> /api/employees</code></a></li>
+  <li><a href="#apiEmployeesIdGet"><code><span class="http-method">get</span> /api/employees/{id}</code></a></li>
+  <li><a href="#apiEmployeesIdPatch"><code><span class="http-method">patch</span> /api/employees/{id}</code></a></li>
+  <li><a href="#apiEmployeesIdPost"><code><span class="http-method">post</span> /api/employees/{id}</code></a></li>
+  </ul>
+
+  <h1><a name="Employees">Employees</a></h1>
+  <div class="method"><a name="apiEmployeesGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/employees</code></pre></div>
+    <div class="method-summary">Получение списка пользователей (<span class="nickname">apiEmployeesGet</span>)</div>
+    <div class="method-notes">Получение списка пользователей с параметрами для поиска (поиск по полям, сортировка и т.п.)</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">name (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Имя сотрудника </div>      <div class="param">surname (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Фамилия сотрудника </div>      <div class="param">patronymic (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Отчество сотрудника </div>      <div class="param">position (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Должность сотрудника </div>      <div class="param">order (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Поле сортировки (id, name, patronymic, surname, position, birthday, phone) </div>      <div class="param">sort (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Вид сортировки (asc, desc) </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      List
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "list" : [ {
+      "id" : 6,
+      "name" : "John",
+      "patronymic" : "Smith",
+      "surname" : "Johnson",
+      "birthday" : "2022-01-01",
+      "position" : "Videomaker",
+      "phone" : "89074561283",
+      "photo" : { },
+      "created_at" : "2023-03-09T12:48:14.000000Z",
+      "updated_at" : "2023-03-09T12:48:14.000000Z"
+    }, {
+      "id" : 4,
+      "name" : "John",
+      "patronymic" : "Hensen",
+      "surname" : "Red",
+      "birthday" : "2012-03-03",
+      "position" : "Developer",
+      "phone" : "89074561283",
+      "created_at" : "2023-03-09T12:03:34.000000Z",
+      "updated_at" : "2023-03-09T13:30:42.000000Z"
+    } ]
+  },
+  "meta" : {
+    "status" : 200,
+    "page" : 1,
+    "limit" : 10,
+    "total" : 2
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Найденные сотрудники, удовлетворяющие условиям
+        <a href="#List">List</a>
+    <h4 class="field-label">400</h4>
+    Текст возникшей ошибки
+        <a href="#List">List</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiEmployeesIdGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/employees/{id}</code></pre></div>
+    <div class="method-summary">Получение сотрудника по его номеру (id) (<span class="nickname">apiEmployeesIdGet</span>)</div>
+    <div class="method-notes">Получение данных о сотруднике по его ID</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; ID пользователя </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      List
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "employee" : {
+      "id" : 6,
+      "name" : "John",
+      "patronymic" : "Smith",
+      "surname" : "Johnson",
+      "birthday" : "2022-01-01",
+      "position" : "Videomaker",
+      "phone" : "88007652391",
+      "created_at" : "2023-03-09T12:48:14.000000Z",
+      "updated_at" : "2023-03-09T12:48:14.000000Z"
+    }
+  },
+  "meta" : {
+    "status" : 200
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Данные о сотруднике по его ID
+        <a href="#List">List</a>
+    <h4 class="field-label">400</h4>
+    Текст возникшей ошибки
+        <a href="#List">List</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiEmployeesIdPatch"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="patch"><code class="huge"><span class="http-method">patch</span> /api/employees/{id}</code></pre></div>
+    <div class="method-summary">Обновление данных о сотруднике (<span class="nickname">apiEmployeesIdPatch</span>)</div>
+    <div class="method-notes">Обновление данных (имя, фамилия, отчество, должность и т.п.) о сотруднике</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">name (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Имя сотрудника </div>      <div class="param">surname (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Фамилия сотрудника </div>      <div class="param">patronymic (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Отчество сотрудника </div>      <div class="param">position (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Должность сотрудника </div>      <div class="param">birthday (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Дата рождения сотрудника </div>      <div class="param">phone (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Телефон сотрудника </div>      <div class="param">photo (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Фото сотрудника </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      List
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "employee" : {
+      "id" : 6,
+      "name" : "John",
+      "patronymic" : "Smith",
+      "surname" : "Johnson",
+      "birthday" : "2022-01-01",
+      "position" : "Videomaker",
+      "phone" : "88007652391",
+      "created_at" : "2023-03-09T12:48:14.000000Z",
+      "updated_at" : "2023-03-09T12:48:14.000000Z"
+    }
+  },
+  "meta" : {
+    "status" : 200
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Обновленные данные о сотруднике
+        <a href="#List">List</a>
+    <h4 class="field-label">400</h4>
+    Текст возникшей ошибки
+        <a href="#List">List</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiEmployeesIdPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/employees/{id}</code></pre></div>
+    <div class="method-summary">Добавление нового сотрудника (<span class="nickname">apiEmployeesIdPost</span>)</div>
+    <div class="method-notes">Добавления данных о новом сотруднике</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">name (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Имя сотрудника </div>      <div class="param">surname (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Фамилия сотрудника </div>      <div class="param">patronymic (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Отчество сотрудника </div>      <div class="param">position (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Должность сотрудника </div>      <div class="param">birthday (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Дата рождения сотрудника </div>      <div class="param">phone (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Телефон сотрудника </div>      <div class="param">photo (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Фото сотрудника </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      List
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data" : {
+    "employee" : {
+      "name" : "Reno",
+      "patronymic" : "Logan",
+      "surname" : "Retrov",
+      "birthday" : "2022-01-01",
+      "phone" : "89998369352",
+      "position" : "Director",
+      "photo_url" : "C:\\test_photos\\ButtonCopy-640a491d35d62.png",
+      "updated_at" : "2023-03-09T21:01:17.000000Z",
+      "created_at" : "2023-03-09T21:01:17.000000Z",
+      "id" : 11
+    }
+  },
+  "meta" : {
+    "status" : 200
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Обновленные данные о сотруднике
+        <a href="#List">List</a>
+    <h4 class="field-label">400</h4>
+    Текст возникшей ошибки
+        <a href="#List">List</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+  </ol>
+
+  </body>
+</html>
